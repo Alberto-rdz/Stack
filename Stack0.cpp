@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
+//comentario push 3 
 
 // define elementos del stack
 const int STACKSIZE = 10;
