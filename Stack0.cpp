@@ -5,16 +5,17 @@ using namespace std;
 //comentario push 3 
 
 // define elementos del stack
+typedef int TIPO; //agregamos esta funcion para no cambiar todo los tipos del código
 const int STACKSIZE = 10; //nuestro stack está limitado a 10 elementos
 struct Stack
 {
   int top;
-  int items[STACKSIZE];
+  TIPO items[STACKSIZE];
   Stack ()  {  top = -1;  } //constructor
 };
 bool empty (Stack* );         // true si esta vacío
-bool pop (Stack*, int* );    // true si hay problemas 
-bool push (Stack*, int );     // true si hay problemas 
+bool pop (Stack*, TIPO* );    // true si hay problemas 
+bool push (Stack*, TIPO );     // true si hay problemas 
 
 
 
@@ -24,7 +25,7 @@ bool push (Stack*, int );     // true si hay problemas
 int main ( int argc, char **argv ) 
 {
   // declara variables
-  int n;
+  TIPO n;
   Stack S;
 
   //valores de la terminal 
@@ -64,7 +65,7 @@ bool empty( Stack *S )
 {    return (S->top == -1);    }
 
 // define funcion
-bool pop( Stack *S, int *valor ) //extrae elementos de la pila. //pasamos por referncia *valor
+bool pop( Stack *S, TIPO *valor ) //extrae elementos de la pila. //pasamos por referncia *valor
 {
   if ( empty(S) == true ) //si está vacío, no se puede extrar nada :(
     return true; //al retornar un true, quiere decir que hubo problemas
@@ -73,7 +74,7 @@ bool pop( Stack *S, int *valor ) //extrae elementos de la pila. //pasamos por re
 } // si retorna false, es que no hubo problemas. 
 
 // define funcion
-bool push( Stack *S, int valor ) // ingresa elementos a la pila (estructua) //pasamos por valor
+bool push( Stack *S, TIPO valor ) // ingresa elementos a la pila (estructua) //pasamos por valor
 {
   if ( S->top == STACKSIZE - 1 ) //verifico si mi stack está lleno (el menos 1 es porque se inicia contar desde cero en el arreglo)
     return true; // si está lleno hay problema y no puede agregarse nada
