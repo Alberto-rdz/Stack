@@ -32,13 +32,13 @@ int main ( int argc, char **argv )
 if( argc > 1)
 {
   int i = 1;
-  n = atoi(  argv[i] );
+  n = atof(  argv[i] );
   while ((n != 0) && !push (&S, n) )
-    n = atoi ( argv [++i] );
+    n = atof ( argv [++i] );//el atof convierte los números de string a flotantes
 }
   else // no pide a usuarios valores de entrada
   {
-    cout << "Enter some integers, ending with 0" << endl;
+    cout << "Enter some integers  data type TIPO, ending with 0" << endl;
     cin >> n;
      while ( (n != 0) && !push(&S,n) ) //mientras el valor no sea 0 y el psuh no me marque que está lleno, puedo ingresar datos y los gurdo en el stack S, lo pasopor referencia
      cin >> n; //cuando encuentre el límite de los espacios o encuente el cero, va a parar
