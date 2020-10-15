@@ -5,7 +5,7 @@ using namespace std;
 //comentario push 3 
 
 // define elementos del stack
-typedef int TIPO; //agregamos esta funcion para no cambiar todo los tipos del código
+typedef float TIPO; //agregamos esta funcion para no cambiar todo los tipos del código
 const int STACKSIZE = 10; //nuestro stack está limitado a 10 elementos
 struct Stack
 {
