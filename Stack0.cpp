@@ -5,12 +5,12 @@ using namespace std;
 //comentario push 3 
 
 // define elementos del stack
-const int STACKSIZE = 10;
+const int STACKSIZE = 10; //nuestro stack está limitado a 10 elementos
 struct Stack
 {
   int top;
   int items[STACKSIZE];
-  Stack ()  {  top = -1;  }
+  Stack ()  {  top = -1;  } //constructor
 };
 bool empty (Stack* );         // true si esta vacío
 bool pop (Stack*, int* );    // true si hay problemas 
@@ -26,17 +26,27 @@ int main ( int argc, char **argv )
   // declara variables
   int n;
   Stack S;
-  
-  // pide a usuario valores de entrada
-  cout << "Enter some integers, ending with 0" << endl;
-  cin >> n;
-  while ( (n != 0) && !push(&S,n) )
+
+  //valores de la terminal 
+if( argc > 1)
+{
+  int i = 1;
+  n = atoi(  argv[i] );
+  while ((n != 0) && !push (&S, n) )
+    n = atoi ( argv [++i] );
+}
+  else // no pide a usuarios valores de entrada
+  {
+    cout << "Enter some integers, ending with 0" << endl;
     cin >> n;
+     while ( (n != 0) && !push(&S,n) ) //mientras el valor no sea 0 y el psuh no me marque que está lleno, puedo ingresar datos y los gurdo en el stack S, lo pasopor referencia
+     cin >> n; //cuando encuentre el límite de los espacios o encuente el cero, va a parar
+  }
 
   // extrae valores
   cout << "Numbers in reverse order" << endl;
-  while ( !pop(&S,&n) )
-    cout << n << " ";
+  while ( !pop(&S,&n) ) //el valor que estoy extrayendo lo obtengo por medio de "n"
+    cout << n << " "; //impirmo el valor
   cout << endl;
   
   // termina funcion
@@ -54,19 +64,19 @@ bool empty( Stack *S )
 {    return (S->top == -1);    }
 
 // define funcion
-bool pop( Stack *S, int *valor )
+bool pop( Stack *S, int *valor ) //extrae elementos de la pila. //pasamos por referncia *valor
 {
-  if ( empty(S) == true )
-    return true;
-  *(valor) = S->items[(S->top)--];
-  return false;
-}
+  if ( empty(S) == true ) //si está vacío, no se puede extrar nada :(
+    return true; //al retornar un true, quiere decir que hubo problemas
+  *(valor) = S->items[(S->top)--]; // si no hubo problemas, sí puede extrar algo
+  return false;                    //extraigo el elemnto que está apuntando el top, paso la posición y decremento en 1 a top
+} // si retorna false, es que no hubo problemas. 
 
 // define funcion
-bool push( Stack *S, int valor )
+bool push( Stack *S, int valor ) // ingresa elementos a la pila (estructua) //pasamos por valor
 {
-  if ( S->top == STACKSIZE - 1 )
-    return true;
-  S->items[++(S->top)] = valor;
-  return false;
-}
+  if ( S->top == STACKSIZE - 1 ) //verifico si mi stack está lleno (el menos 1 es porque se inicia contar desde cero en el arreglo)
+    return true; // si está lleno hay problema y no puede agregarse nada
+  S->items[++(S->top)] = valor; // si no, en caso de que haya espacio, 
+  return false; //incrementamos nuestro valor de top, y guardamos el dato en la variable "valor"
+}// si retorna false, es que no hubo problema y se pudo hacer
