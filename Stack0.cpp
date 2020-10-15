@@ -5,7 +5,7 @@ using namespace std;
 //comentario push 3 
 
 // define elementos del stack
-typedef char TIPO; //agregamos esta funcion para no cambiar todo los tipos del código
+typedef float TIPO; //agregamos esta funcion para no cambiar todo los tipos del código
 const int STACKSIZE = 10; //nuestro stack está limitado a 10 elementos
 struct Stack
 {
@@ -40,7 +40,7 @@ if( argc > 1)
   {
     cout << "Enter some integers  data type TIPO, ending with 0" << endl;
     cin >> n;
-     while ( (n != '0') && !push(&S,n) ) //mientras el valor no sea 0 y el psuh no me marque que está lleno, puedo ingresar datos y los gurdo en el stack S, lo pasopor referencia
+     while ( (n != 0) && !push(&S,n) ) //mientras el valor no sea 0 y el psuh no me marque que está lleno, puedo ingresar datos y los gurdo en el stack S, lo pasopor referencia
      cin >> n; //cuando encuentre el límite de los espacios o encuente el cero, va a parar
   }
 
